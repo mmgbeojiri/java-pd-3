@@ -17,19 +17,25 @@ class Main {
 	}
 
 	double sphereVolume(double r) {
-		return( 4.0/3.0) * Math.PI * Math.pow(r, 3);
+		return (4.0/3.0) * Math.PI * Math.pow(r, 3);
+	}
+
+	double coneVolume(double r, double h) {
+		return Math.PI * Math.pow(r,2) * (h/3);
 	}
 
 	double distance(double x1, double y1, double x2, double y2) {
 		return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 	}
 
+
+
   void init(){
 	print("Hello, World!");
 
 	print(FtoC(32));
 	print(sphereVolume(5));
-
+	print(coneVolume(3, 5));
 	print(distance(5, 6, 5, 10));
   }
 
