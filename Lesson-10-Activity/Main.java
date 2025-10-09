@@ -45,8 +45,11 @@ class Main {
 		}
 	}
 	void init(){
-		
-   
+
+   System.out.println(gpa(90.67));
+   System.out.println(isGraduating(11, 52));
+   System.out.println(BMI(230, 69));
+   System.out.println(blueOrViolet(670));
 
   }
 
