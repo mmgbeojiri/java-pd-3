@@ -8,9 +8,7 @@ class Main {
   void printt(Object o){System.out.print(o);}
 
   void init(){
-    print("It takes " + allowance() + " days to reach $5.");
-    addTwoNumbers();
-    print(GCF(2, 6));
+    menu();
   }
 
   void addTwoNumbers() {
@@ -38,6 +36,40 @@ int GCF(int a, int b) {
       a = temp;
     }
     return a;
+}
+
+void menu(){
+  print("Welcome Looney Tune's System");
+  boolean exit = false;
+  while (!exit) {
+    print("Select from the following choices:");
+    print("1 - Allowance");
+    print("2 - Addition game");
+    print("3 - Calculate the GCF of two integers");
+    print("4 - Exit Looney Tune System");
+
+    int choice = Input.readInt();
+
+    switch (choice) {
+      case 1:
+        allowance();
+        break;
+      case 2:
+        addTwoNumbers();
+        break;
+      case 3:
+        print("Enter first integer:");
+        int num1 = Input.readInt();
+        print("Enter second integer:");
+        int num2 = Input.readInt();
+        print("The GCF of " + num1 + " and " + num2 + " is " + GCF(num1, num2));
+        break;
+        case 4:
+          print("Exiting Looney Tune System. Goodbye!");
+          exit = true;
+          break;
+    }
+  }
 }
 
   double allowance() {
