@@ -28,7 +28,7 @@ class Main {
     String sql3 = "UPDATE CR101 SET Room = 213 WHERE Teacher1 = 'DOYLE' AND Period IN (4,5)";
     String sql4 = "UPDATE CR101 SET Teacher1 = 'Mr ROFFLER' WHERE Teacher1 = 'MR ARCHETTI' AND Course = 'MQF44QGF'";
     String sql5 = "UPDATE CR101 SET Grade = 11, OffClass = 'Junior' WHERE StudentID = 'STUDENT999'";
-    String sql6 = "INSERT INTO CR101 ('Course', 'Section', 'Teacher1', 'Period, 'Room', 'StudentID') VALUES ('MKUFTC6',1,'CASTRO R',9,322,'student1231')";
+    String sql6 = "INSERT INTO CR101 ('Course', 'Section', 'Teacher1', 'Period', 'Room', 'StudentID') VALUES ('MKUFTC6',1,'CASTRO R',9,322,'student1231')";
 
     db.runSQL(sql1, "table-auto");	
     db.runSQL(sql2, "table-auto");	
