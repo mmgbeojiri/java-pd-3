@@ -5,6 +5,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  *{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .message {
+    flex: 1;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    margin:1rem;
+    padding:1rem;
+    background-color: #ddd;
+  }
+
+  .message h1 {
+    font-size: 1.5rem;
+  }
+</style>
 </head>
 
 <body>
@@ -25,10 +43,18 @@
       .then(response => response.json())
       .then(data => {
         data.forEach(element => {
-          console.log(element);
-          htmlCode += `<div><h1>${element.name}</h1><p>${element.message}</p><span>${element.timestamp}</span></div>`;
+          console.log(htmlCode);
+          htmlCode += `<div class="message"><h1>${element.Name}</h1><p>${element.Message}</p><span>${element.Timestamp}</span></div>`;
           jsonData.push(element);
         });
+      }).finally(() => {
+        console.log("Fetch Completed.");
+        
+    console.log(jsonData);
+    console.log(`HTML`+ htmlCode);
+
+    
+    jsonContainer.innerHTML = htmlCode;
       });
     } catch {
       response = "Server Returned 500."
@@ -36,11 +62,6 @@
       return
     }
 
-    console.log(jsonData);
-    console.log(`HTML`+ htmlCode);
-
-    
-    jsonContainer.innerHTML = htmlCode;
   }
 </script>
 </body>
