@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+<h1>Lets Try To Access the Server.</h1>
+<button onClick = getData()>Click Here To Fetch Data</button>
+<div id="jsonContainer"></div>
+<script>
+  name = [];
+
+
+  async function getData() {
+    jsonData = [];
+    htmlCode = ""
+    jsonContainer = document.getElementById("jsonContainer");
+    try {
+      fetch("https://sturdy-system-7vv7qq955gqrfpvwr-8500.app.github.dev/")
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(element => {
+          console.log(element);
+          htmlCode += `<div><h1>${element.name}</h1><p>${element.message}</p><span>${element.timestamp}</span></div>`;
+          jsonData.push(element);
+        });
+      });
+    } catch {
+      response = "Server Returned 500."
+      console.log("fagh.")
+      return
+    }
+
+    console.log(jsonData);
+    console.log(`HTML`+ htmlCode);
+
+    
+    jsonContainer.innerHTML = htmlCode;
+  }
+</script>
+</body>
+</html>
