@@ -9,9 +9,16 @@
   *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+  #jsonContainer {
+    overflow-y:scroll;
+    height: 80vh;
+    display: flex;
+    flex-direction: column-reverse;
+    scroll-behavior: smooth;
+  }
   .message {
     flex: 1;
-    flex-direction: row;
+    
     border: 1px solid #ccc;
     border-radius: 1rem;
     margin:1rem;
@@ -44,7 +51,7 @@
       .then(data => {
         data.forEach(element => {
           console.log(htmlCode);
-          htmlCode += `<div class="message"><h1>${element.Name}</h1><p>${element.Message}</p><span>${element.Timestamp}</span></div>`;
+          htmlCode = `<div class="message"><h1>${element.Name}</h1><p>${element.Message}</p><span>${element.Timestamp}</span></div>` +htmlCode;
           jsonData.push(element);
         });
       }).finally(() => {
