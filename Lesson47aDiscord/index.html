@@ -347,7 +347,7 @@ form button {
   <form>
     <input type="text" id="nameInput" placeholder="Username"></input>
     <input type="text" id="messageInput" placeholder="Enter your message"></input>
-    <button type="submit">Send</button>
+    <button type="button" onclick="sendData()">Send</button>
     </form>
     </div>
 <script>
@@ -382,6 +382,19 @@ form button {
       return
     }
 
+  }
+
+  async function sendData() {
+    name = document.getElementById("nameInput").value;
+    message = document.getElementById("messageInput").value;
+    data = {
+      "Name": name,
+      "Message": message,
+      "Timestamp": new Date().toLocaleString()
+    }
+    console.log("button pressed.");
+    console.log(data);
+    return;
   }
 </script>
 </body>

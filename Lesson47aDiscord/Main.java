@@ -36,6 +36,8 @@ public class Main {
       HttpServer server = HttpServer.create(new InetSocketAddress(port),0);
 
       server.createContext("/", new RouteHandler(discord, "SELECT * FROM Tweets"));
+      server.createContext("/post", new PostHandler());// new file i made to create post requests
+
       String html = Input.readFile("./index.html");
 
 
