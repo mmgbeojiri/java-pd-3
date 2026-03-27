@@ -394,6 +394,18 @@ form button {
     }
     console.log("button pressed.");
     console.log(data);
+     try {
+    const response = await fetch("https://sturdy-system-7vv7qq955gqrfpvwr-8500.app.github.dev/post", {
+      method: "POST", // *MUST* be 'POST' for a POST request
+      headers: {
+        "Content-Type": "application/json", // Indicates the body format is JSON
+      },
+      body: JSON.stringify(data), // Converts the JavaScript object to a JSON string
+    });
+  }  catch (error) {
+    console.error("Error:", error); // Handles network errors or the error thrown above
+  }
+
     return;
   }
 </script>

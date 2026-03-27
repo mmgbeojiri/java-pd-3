@@ -26,6 +26,7 @@ import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 
 public  class PostHandler implements HttpHandler {
+        Database discord = new Database("jdbc:sqlite:twitter.db");
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if ("POST".equals(exchange.getRequestMethod())) {
@@ -33,6 +34,13 @@ public  class PostHandler implements HttpHandler {
                 InputStream is = exchange.getRequestBody();
                 String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
                 System.out.println("Received: " + body);
+                // {"Name":"Michael","Message":"First POST request on the server.","Timestamp":"3/27/2026, 2:48:46 PM"} 
+                // we need thisinto "('Michael','First POST request on the server.','3/27/2026, 2:48:46 PM')"
+                String name = body.json().Name;
+                String message = body.json().Message;
+                String timestamp = body.json().Timestamp;
+
+                System.out.println(name + " " + message + " " + timestamp);
 
                 // Send response
                 String response = "Data Received";
