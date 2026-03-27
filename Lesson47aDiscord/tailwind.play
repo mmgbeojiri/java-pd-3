@@ -1,5 +1,7 @@
-<h1>Lets Try To Access the Server.</h1>
-<button>Click Here To Fetch Data</button>
+<div id="header">
+  <h1>Lets Try To Access the Server.</h1>
+  <button onClick = getData()>Click Here To Fetch Data</button>
+</div>
 <div id="jsonContainer">
   <div class="message">
     <h1>da big porche</h1>

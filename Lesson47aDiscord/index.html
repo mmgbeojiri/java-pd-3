@@ -5,8 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-  /*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+<style>/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -19,6 +18,8 @@
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-slate-50: oklch(98.4% 0.003 247.858);
+    --color-slate-100: oklch(96.8% 0.007 247.896);
+    --color-slate-200: oklch(92.9% 0.013 255.508);
     --color-slate-300: oklch(86.9% 0.022 252.894);
     --color-slate-400: oklch(70.4% 0.04 256.788);
     --color-slate-500: oklch(55.4% 0.046 257.417);
@@ -187,13 +188,60 @@
   --tw-duration: 100ms;
   transition-duration: 100ms;
 }
+#header {
+  display: flex;
+  height: 8vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 2px;
+  border-color: var(--color-slate-200);
+  background-color: var(--color-slate-50);
+  padding-inline: calc(var(--spacing) * 5);
+}
+#header h1 {
+  border-radius: 0.25rem;
+  padding: calc(var(--spacing) * 2);
+  font-size: var(--text-xl);
+  line-height: var(--tw-leading, var(--text-xl--line-height));
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-slate-500);
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-white);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-slate-400);
+    }
+  }
+}
+button {
+  border-radius: 0.25rem;
+  border-color: var(--color-blue-500);
+  background-color: var(--color-blue-400);
+  padding: calc(var(--spacing) * 3);
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-blue-200);
+    }
+  }
+}
 #jsonContainer {
   display: flex;
   max-height: 80vh;
   flex-direction: column-reverse;
   gap: calc(var(--spacing) * 1);
   overflow-y: scroll;
+  scroll-behavior: smooth;
   background-color: var(--color-slate-50);
+  padding-block: calc(var(--spacing) * 3);
 }
 .message {
   margin-inline: calc(var(--spacing) * 5);
@@ -223,14 +271,18 @@
   color: var(--color-slate-400);
 }
 form {
-  margin-inline: calc(var(--spacing) * 1);
+  margin-inline: auto;
   display: flex;
-  width: 100%;
+  height: 12vh;
   flex-direction: row;
-  justify-content: space-between;
   gap: calc(var(--spacing) * 1);
+  border-top-style: var(--tw-border-style);
+  border-top-width: 2px;
+  border-color: var(--color-slate-100);
+  background-color: var(--color-slate-50);
+  padding: calc(var(--spacing) * 5);
 }
-form input {
+#messageInput {
   margin-block: calc(var(--spacing) * 1);
   flex: 8;
   border-radius: 0.25rem;
@@ -243,23 +295,8 @@ form input {
 form button {
   margin-block: calc(var(--spacing) * 1);
   flex: 2;
-  border-radius: 0.25rem;
-  border-color: var(--color-blue-500);
-  background-color: var(--color-blue-400);
-  --tw-font-weight: var(--font-weight-bold);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
-  &:hover {
-    @media (hover: hover) {
-      background-color: var(--color-blue-200);
-    }
-  }
 }
 @property --tw-duration {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-font-weight {
   syntax: "*";
   inherits: false;
 }
@@ -268,23 +305,42 @@ form button {
   inherits: false;
   initial-value: solid;
 }
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-duration: initial;
-      --tw-font-weight: initial;
       --tw-border-style: solid;
+      --tw-font-weight: initial;
     }
   }
+}
+
 
   /*
 
+}
 
 * {
   @apply duration-100
 }
+
+#header {
+  @apply bg-slate-50 flex flex-row items-center border-b-2 border-slate-200 h-[8vh] justify-between px-5
+}
+
+#header h1 {
+ @apply text-xl font-bold p-2 text-slate-500 hover:bg-white hover:text-slate-400 rounded
+}
+
+button {
+  @apply bg-blue-400 border-blue-500 hover:bg-blue-200 p-3 text-white font-bold rounded 
+}
 #jsonContainer {
-  @apply flex flex-col-reverse gap-1 overflow-y-scroll max-h-[80vh] bg-slate-50
+  @apply flex flex-col-reverse gap-1 overflow-y-scroll scroll-smooth max-h-[80vh] py-3 bg-slate-50
 }
 
 .message {
@@ -304,25 +360,27 @@ form button {
 }
 
 form {
-  @apply flex flex-row w-full mx-1 justify-between gap-1
+  @apply flex flex-row mx-auto gap-1 p-5 bg-slate-50 border-t-2 border-slate-100 h-[12vh]
 }
 
-form input {
+#messageInput {
   @apply flex-[8] border-slate-300 text-slate-800 border my-1 rounded p-3
 }
 
 form button {
-  @apply flex-[2] bg-blue-400 border-blue-500 hover:bg-blue-200 text-white font-bold rounded my-1
-}*/
+  @apply  flex-[2] my-1
 }
+*/
+
 
 </style>
 </head>
 
 <body>
-
-<h1>Lets Try To Access the Server.</h1>
-<button onClick = getData()>Click Here To Fetch Data</button>
+<div id="header">
+  <h1>Lets Try To Access the Server.</h1>
+  <button onClick = getData()>Click Here To Fetch Data</button>
+</div>
 <div id="jsonContainer"></div>
 <div><form><input type="text" id="messageInput" placeholder="Enter your message"><button type="submit">Send</button></form></div>
 <script>
