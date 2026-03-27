@@ -5,7 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+<style>
+  /*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -28,6 +29,8 @@
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --font-weight-bold: 700;
@@ -190,7 +193,7 @@
 }
 #header {
   display: flex;
-  height: 8vh;
+  height: 10vh;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -220,10 +223,13 @@
   }
 }
 button {
+  align-items: center;
   border-radius: 0.25rem;
+  border-style: var(--tw-border-style);
+  border-width: 1px;
   border-color: var(--color-blue-500);
   background-color: var(--color-blue-400);
-  padding: calc(var(--spacing) * 3);
+  padding-inline: calc(var(--spacing) * 3);
   --tw-font-weight: var(--font-weight-bold);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
@@ -256,6 +262,7 @@ button {
   }
 }
 .message h1 {
+  margin: calc(var(--spacing) * 0);
   font-size: var(--text-xl);
   line-height: var(--tw-leading, var(--text-xl--line-height));
   --tw-font-weight: var(--font-weight-bold);
@@ -263,6 +270,8 @@ button {
   color: var(--color-slate-500);
 }
 .message p {
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
   color: var(--color-slate-800);
 }
 .message span {
@@ -273,7 +282,7 @@ button {
 form {
   margin-inline: auto;
   display: flex;
-  height: 12vh;
+  height: 10vh;
   flex-direction: row;
   gap: calc(var(--spacing) * 1);
   border-top-style: var(--tw-border-style);
@@ -282,9 +291,8 @@ form {
   background-color: var(--color-slate-50);
   padding: calc(var(--spacing) * 5);
 }
-#messageInput {
-  margin-block: calc(var(--spacing) * 1);
-  flex: 8;
+input {
+  min-width: calc(var(--spacing) * 0);
   border-radius: 0.25rem;
   border-style: var(--tw-border-style);
   border-width: 1px;
@@ -292,9 +300,15 @@ form {
   padding: calc(var(--spacing) * 3);
   color: var(--color-slate-800);
 }
+#nameInput {
+  flex: 2!important;
+}
+#messageInput {
+  flex: 10;
+}
 form button {
-  margin-block: calc(var(--spacing) * 1);
-  flex: 2;
+  min-width: calc(var(--spacing) * 0);
+  flex: 1!important;
 }
 @property --tw-duration {
   syntax: "*";
@@ -319,60 +333,6 @@ form button {
   }
 }
 
-
-  /*
-
-}
-
-* {
-  @apply duration-100
-}
-
-#header {
-  @apply bg-slate-50 flex flex-row items-center border-b-2 border-slate-200 h-[8vh] justify-between px-5
-}
-
-#header h1 {
- @apply text-xl font-bold p-2 text-slate-500 hover:bg-white hover:text-slate-400 rounded
-}
-
-button {
-  @apply bg-blue-400 border-blue-500 hover:bg-blue-200 p-3 text-white font-bold rounded 
-}
-#jsonContainer {
-  @apply flex flex-col-reverse gap-1 overflow-y-scroll scroll-smooth max-h-[80vh] py-3 bg-slate-50
-}
-
-.message {
-  @apply   hover:bg-white rounded flex flex-col p-5 mx-5 
-}
-
-.message h1 {
-  @apply text-xl text-slate-500 font-bold
-}
-
-.message p {
-  @apply text-slate-800
-}
-
-.message span {
-  @apply text-sm text-slate-400
-}
-
-form {
-  @apply flex flex-row mx-auto gap-1 p-5 bg-slate-50 border-t-2 border-slate-100 h-[12vh]
-}
-
-#messageInput {
-  @apply flex-[8] border-slate-300 text-slate-800 border my-1 rounded p-3
-}
-
-form button {
-  @apply  flex-[2] my-1
-}
-*/
-
-
 </style>
 </head>
 
@@ -382,7 +342,14 @@ form button {
   <button onClick = getData()>Click Here To Fetch Data</button>
 </div>
 <div id="jsonContainer"></div>
-<div><form><input type="text" id="messageInput" placeholder="Enter your message"><button type="submit">Send</button></form></div>
+
+<div>
+  <form>
+    <input type="text" id="nameInput" placeholder="Username"></input>
+    <input type="text" id="messageInput" placeholder="Enter your message"></input>
+    <button type="submit">Send</button>
+    </form>
+    </div>
 <script>
   name = [];
 

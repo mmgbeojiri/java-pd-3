@@ -95,10 +95,13 @@
 2026-03-12T13:05:22.992618900Z</span>
 </div>
 </div>
-<div>
-  <form><input type="text" id="messageInput" placeholder="Enter yo=
-ur message"><button type="submit">Send</button></form>
-</div>
 
+<div>
+  <form>
+    <input type="text" id="nameInput" placeholder="Username"></input>
+    <input type="text" id="messageInput" placeholder="Enter your message"></input>
+    <button type="submit">Send</button>
+    </form>
+    </div>
 
 
