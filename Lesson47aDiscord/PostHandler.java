@@ -36,9 +36,9 @@ public  class PostHandler implements HttpHandler {
                 System.out.println("Received: " + body);
                 // {"Name":"Michael","Message":"First POST request on the server.","Timestamp":"3/27/2026, 2:48:46 PM"} 
                 // we need thisinto "('Michael','First POST request on the server.','3/27/2026, 2:48:46 PM')"
-                String name = body.json().Name;
-                String message = body.json().Message;
-                String timestamp = body.json().Timestamp;
+                String name = body.split("\"Name\":\"")[1].split("\"")[0];
+                String message = body.split("\"Message\":\"")[1].split("\"")[0];
+                String timestamp = body.split("\"Timestamp\":\"")[1].split("\"")[0];
 
                 System.out.println(name + " " + message + " " + timestamp);
 
