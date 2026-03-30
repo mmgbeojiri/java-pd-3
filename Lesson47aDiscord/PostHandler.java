@@ -26,10 +26,10 @@ import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 
 public  class PostHandler implements HttpHandler {
-        Database discord = new Database("jdbc:sqlite:twitter.db");
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if ("POST".equals(exchange.getRequestMethod())) {
+                Database discord = new Database("jdbc:sqlite:twitter.db");
                 // Read input stream
                 InputStream is = exchange.getRequestBody();
                 String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
@@ -41,11 +41,24 @@ public  class PostHandler implements HttpHandler {
                 String timestamp = body.split("\"Timestamp\":\"")[1].split("\"")[0];
                 // we need to make a future one to accept id
 
-                String semiSQLString = String.format("('%s','%s','%s')", name, message, timestamp);
+                //This is SQL injection code at risk, and will only be left in as an example of what not to do.
+                /*String semiSQLString = String.format("('%s','%s','%s')", name, message, timestamp);
                 System.out.println(semiSQLString);
+                String fullSQLString = "INSERT INTO Tweets VALUES " + semiSQLString;
 
-                discord.runSQL("INSERT INTO Tweets VALUES " + semiSQLString);
-                System.out.println("successfully inserted into it.");
+                discord.runSQL(fullSQLString);
+                System.out.println(fullSQLString);
+                System.out.println("successfully inserted into it.");*/
+                
+                String insert = "INSERT INTO Tweets VALUES (?, ?, ?);";
+                PreparedStatement ps = connection.prepareStatement(insert);
+                ps.setString(1, name);
+                ps.setString(2, message);
+                ps.setString(3, timestamp);
+
+                System.out.println(ps);
+
+                //ResultSet rs = ps.executeQuery();
 
                 // Send response
                 String response = "Data Received";
