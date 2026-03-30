@@ -4,7 +4,11 @@
 </div>
 <div id="jsonContainer">
   <div class="message">
-    <h1>da big porche</h1>
+  <div class="messageHeader">
+              <h1>da big porche</h1>
+              <button>edit</button>
+              <button>delete</button>
+            </div>
     <p>d=
       umbass</p><span>2026-03-24T13:11:53.712996600Z</span>
   </div>
