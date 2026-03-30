@@ -355,7 +355,7 @@ form button {
 
    messageInput.addEventListener("keydown", function(event) {
         // If the user presses the "Enter" key on the keyboard
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && !event.shiftKey) { // allow for shift enter
             // Cancel the default action, if needed, especially for textareas
             event.preventDefault(); 
             // Trigger the form submission or button click
