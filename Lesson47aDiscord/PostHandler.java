@@ -29,6 +29,7 @@ public  class PostHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if ("POST".equals(exchange.getRequestMethod())) {
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:twitter.db");
                 Database discord = new Database("jdbc:sqlite:twitter.db");
                 // Read input stream
                 InputStream is = exchange.getRequestBody();
