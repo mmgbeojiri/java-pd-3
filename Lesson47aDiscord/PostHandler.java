@@ -24,13 +24,17 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.sql.Connection; // possibly redundant but you know me ill import the entire library of alexandria if given the choice
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public  class PostHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if ("POST".equals(exchange.getRequestMethod())) {
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:twitter.db");
-                Database discord = new Database("jdbc:sqlite:twitter.db");
+               
+                //Database discord = new Database("jdbc:sqlite:twitter.db");
                 // Read input stream
                 InputStream is = exchange.getRequestBody();
                 String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
@@ -51,6 +55,11 @@ public  class PostHandler implements HttpHandler {
                 System.out.println(fullSQLString);
                 System.out.println("successfully inserted into it.");*/
                 
+                
+                try (Connection connection = DriverManager.getConnection("jdbc:sqlite:twitter.db")) {
+                    // Connection is established and available for use here
+                    
+                    // You can now create your PreparedStatement
                 String insert = "INSERT INTO Tweets VALUES (?, ?, ?);";
                 PreparedStatement ps = connection.prepareStatement(insert);
                 ps.setString(1, name);
@@ -59,7 +68,10 @@ public  class PostHandler implements HttpHandler {
 
                 System.out.println(ps);
 
-                //ResultSet rs = ps.executeQuery();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                ResultSet rs = ps.executeUpdate();
 
                 // Send response
                 String response = "Data Received";
