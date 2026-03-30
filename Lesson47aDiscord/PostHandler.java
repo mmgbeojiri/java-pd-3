@@ -39,8 +39,13 @@ public  class PostHandler implements HttpHandler {
                 String name = body.split("\"Name\":\"")[1].split("\"")[0];
                 String message = body.split("\"Message\":\"")[1].split("\"")[0];
                 String timestamp = body.split("\"Timestamp\":\"")[1].split("\"")[0];
+                // we need to make a future one to accept id
 
-                System.out.println(name + " " + message + " " + timestamp);
+                String semiSQLString = String.format("('%s','%s','%s')", name, message, timestamp);
+                System.out.println(semiSQLString);
+
+                discord.runSQL("INSERT INTO Tweets VALUES " + semiSQLString);
+                System.out.println("successfully inserted into it.");
 
                 // Send response
                 String response = "Data Received";
@@ -50,6 +55,7 @@ public  class PostHandler implements HttpHandler {
                 os.close();
             } else {
                 exchange.sendResponseHeaders(405, -1); // Method Not Allowed
+                // If you get this error, you probably sent a get request to the post api output, which probably means you went to the site in your browser
             }
         }
     }
