@@ -373,7 +373,16 @@ form button {
       .then(data => {
         data.forEach(element => {
           console.log(htmlCode);
-          htmlCode = `<div class="message" id="${element.Id}"><h1>${element.Name}</h1><p>${element.Message}</p><span>${new Date(element.Timestamp).toLocaleString()}</span></div>` +htmlCode; // can you change the timestamp to be an actual readable string? what the fuck is 2026-03-24T13:11:53.712996600Z?
+          htmlCode = `
+          <div class="message" id="${element.Id}">
+            <div class="messageHeader">
+              <h1>${element.Name}</h1>
+              <button>edit</button>
+              <button>delete</button>
+            </div>
+            <p>${element.Message}</p>
+            <span>${new Date(element.Timestamp).toLocaleString()}</span>
+            </div>` +htmlCode;
           jsonData.push(element);
         });
       }).finally(() => {
