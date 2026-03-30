@@ -66,12 +66,11 @@ public  class PostHandler implements HttpHandler {
                 ps.setString(2, message);
                 ps.setString(3, timestamp);
 
-                System.out.println(ps);
+                ps.executeUpdate();
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                ResultSet rs = ps.executeUpdate();
 
                 // Send response
                 String response = "Data Received";
