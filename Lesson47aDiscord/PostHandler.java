@@ -60,7 +60,7 @@ public  class PostHandler implements HttpHandler {
                     // Connection is established and available for use here
                     
                     // You can now create your PreparedStatement
-                String insert = "INSERT INTO Tweets VALUES (?, ?, ?);";
+                String insert = "INSERT INTO Tweets (Name, Message, Timestamp) VALUES (?, ?, ?);";
                 PreparedStatement ps = connection.prepareStatement(insert);
                 ps.setString(1, name);
                 ps.setString(2, message);
