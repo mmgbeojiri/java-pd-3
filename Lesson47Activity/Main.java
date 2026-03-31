@@ -35,7 +35,12 @@ class Main {
 
     // create the database object
     Database db = new Database("jdbc:sqlite:chinook.db");
-    
+
+    server.createContext("/", new RouteHandler("You are connected, but route not given or incorrect..."));
+    server.createContext("/customers", new RouteHandler(db, "SELECT * FROM customers"));
+    server.createContext("/employees", new RouteHandler(db, "SELECT * FROM employees"));
+    server.createContext("/albumsinfo", new RouteHandler(db, "Select tracks.Name, artists.Name FROM artists INNER JOIN albums ON albums.ArtistId = artists.ArtistId INNER JOIN tracks ON tracks.AlbumId = albums.AlbumId INNER JOIN tracks ON tracks.AlbumId = albums.AlbumId LIMIT 10"));
+    server.createContext("/customersongs", new RouteHandler(db, "SELECT customers.FirstName, customers.LastName, tracks.Name, invoices.InvoiceDate FROM customers INNER JOIN invoices ON invoices.customerId = Customers.customerId INNER JOIN invoice_items ON invoice_items.invoiceId = invoices.invoiceId INNER JOIN tracks ON tracks.trackId = invoice_items.trackId LIMIT 10"));
     
 
    // Add your  code here
