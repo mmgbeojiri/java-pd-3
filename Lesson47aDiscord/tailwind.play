@@ -6,8 +6,10 @@
   <div class="message">
   <div class="messageHeader">
               <h1>da big porche</h1>
+              <div class="buttonContainer">
               <button>edit</button>
               <button>delete</button>
+              </div>
             </div>
     <p>d=
       umbass</p><span>2026-03-24T13:11:53.712996600Z</span>
@@ -99,12 +101,12 @@
 2026-03-12T13:05:22.992618900Z</span>
 </div>
 </div>
-
 <div>
+  <h2 id="editing" >Editing Message.</h2>
   <form>
     <input type="text" id="nameInput" placeholder="Username"></input>
     <input type="text" id="messageInput" placeholder="Enter your message"></input>
-    <button type="submit">Send</button>
+    <button type="button" onclick="sendData()">Send</button>
     </form>
     </div>
 

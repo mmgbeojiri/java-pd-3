@@ -391,8 +391,10 @@ form button {
           <div class="message" id="${element.Id}">
             <div class="messageHeader">
               <h1>${element.Name}</h1>
+              <div class="buttonContainer">
               <button onclick="populateData('${element.Id}')">edit</button>
               <button>delete</button>
+              </div>
             </div>
             <p>${element.Message}</p>
             <span>${new Date(element.Timestamp).toLocaleString()}</span>
