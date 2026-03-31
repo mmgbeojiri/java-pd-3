@@ -3,6 +3,11 @@
 @theme {
   /* ... */
 }
+@import "tailwindcss";
+
+@theme {
+  /* ... */
+}
 
 * {
   @apply duration-100
@@ -57,5 +62,17 @@ input {
 
 form button {
   @apply flex-[1]! min-w-0
+}
+
+.messageHeader {
+  @apply  flex flex-row justify-between
+}
+
+.buttonContainer button {
+  @apply bg-slate-300 border-slate-400 text-slate-50 hover:bg-slate-200
+}
+
+#editing {
+  @apply absolute mx-5 text-xs my-1 text-slate-400
 }
 */
