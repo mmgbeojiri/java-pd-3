@@ -3,11 +3,6 @@
 @theme {
   /* ... */
 }
-@import "tailwindcss";
-
-@theme {
-  /* ... */
-}
 
 * {
   @apply duration-100
@@ -35,9 +30,15 @@ button {
 .message h1 {
   @apply text-xl text-slate-500 font-bold m-0
 }
-
+.messageContent {
+  @apply flex flex-row gap-1 items-baseline
+}
 .message p {
   @apply text-slate-800 text-lg
+}
+
+.editDisclaimer {
+  @apply !text-slate-400 !text-sm items-baseline
 }
 
 .message span {
@@ -75,4 +76,6 @@ form button {
 #editing {
   @apply absolute mx-5 text-xs my-1 text-slate-400
 }
+
+
 */
