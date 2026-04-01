@@ -552,6 +552,11 @@ form button {
             messageInput.value = "";
            
         }
+
+        if (event.key === "Escape") {
+          toggleEditing(false);
+          messageInput.value = "";
+        }
     });
   async function getData() {
     jsonData = [];
@@ -562,7 +567,6 @@ form button {
       .then(response => response.json())
       .then(data => {
         data.forEach(element => {
-          console.log(htmlCode);
           htmlCode = `
           <div class="message" id="${element.Id}">
             <div class="messageHeader">
@@ -580,15 +584,14 @@ form button {
       }).finally(() => {
         console.log("Fetch Completed.");
         
-    console.log(jsonData);
-    console.log(`HTML`+ htmlCode);
+
 
     
     jsonContainer.innerHTML = htmlCode;
       });
     } catch {
       response = "Server Returned 500."
-      console.log("fagh.")
+      console.log("Server Error.")
       return
     }
 
@@ -604,8 +607,21 @@ form button {
         "Timestamp": new Date(document.getElementById(editing_id).querySelector("span").innerText).toISOString(),
         "Id": editing_id,
       }
-      console.log(data);
       toggleEditing(false);
+
+      try {
+        const response = await fetch("https://sturdy-system-7vv7qq955gqrfpvwr-8500.app.github.dev/put", {
+          method: "PUT", // *MUST* be 'PUT' for a PUT request
+          headers: {
+            "Content-Type": "application/json", // Indicates the body format is JSON
+          },
+          body: JSON.stringify(data), // Converts the JavaScript object to a JSON string
+        });
+      } catch (error) {
+        console.error("Error:", error); // Handles network errors or the error thrown above
+      }
+
+      getData();
       return;
     }
     data = {
@@ -614,7 +630,6 @@ form button {
       "Timestamp": new Date().toISOString()
     }
     console.log("button pressed.");
-    console.log(data);
      try {
     const response = await fetch("https://sturdy-system-7vv7qq955gqrfpvwr-8500.app.github.dev/post", {
       method: "POST", // *MUST* be 'POST' for a POST request

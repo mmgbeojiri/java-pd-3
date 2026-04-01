@@ -37,7 +37,7 @@ public class Main {
 
       server.createContext("/", new RouteHandler(discord, "SELECT * FROM Tweets"));
       server.createContext("/post", new PostHandler());// new file i made to create post requests
-      sever.createContext("/put", new PutHandler());// new file i made to create put requests
+      server.createContext("/put", new PutHandler());// new file i made to create put requests
 
       String html = Input.readFile("./index.html");
 
