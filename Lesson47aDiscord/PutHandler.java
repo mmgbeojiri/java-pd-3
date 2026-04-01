@@ -43,7 +43,7 @@ public  class PutHandler implements HttpHandler {
                 String id = body.split("\"Id\":\"")[1].split("\"")[0];
                 // note how we arent taking the timestamp.
                 
-                /*
+                
                 try (Connection connection = DriverManager.getConnection("jdbc:sqlite:twitter.db")) {
 
                     String insert = "UPDATE Tweets SET Name = ?, Message = ? WHERE Id = ?";
@@ -57,10 +57,9 @@ public  class PutHandler implements HttpHandler {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-*/
+
                 // Send response
                 String response = "Data Received";
-                System.out.println(body);
                 exchange.sendResponseHeaders(200, response.length());
                 OutputStream os = exchange.getResponseBody();
                 os.write(response.getBytes());
