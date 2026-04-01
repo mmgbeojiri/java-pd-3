@@ -5,8 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-  /*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+<style>/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -282,6 +281,9 @@ button {
   line-height: var(--tw-leading, var(--text-lg--line-height));
   color: var(--color-slate-800);
 }
+.message.active {
+  background-color: var(--color-white)!important;
+}
 .editDisclaimer {
   align-items: baseline;
   font-size: var(--text-sm)!important;
@@ -369,7 +371,6 @@ form button {
     }
   }
 }
-
 </style>
 </head>
 
@@ -397,10 +398,13 @@ form button {
     editing = bool;
     let editingNote = document.getElementById("editing");
 
+    activeElement = document.getElementById(editing_id);
     if (editing) {
       editingNote.style.display = "block";
+      activeElement.classList.add("active");
     } else {
       editingNote.style.display = "none";
+      activeElement.classList.remove("active");
     }
   }
    messageInput.addEventListener("keydown", function(event) {

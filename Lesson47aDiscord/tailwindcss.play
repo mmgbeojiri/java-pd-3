@@ -36,7 +36,9 @@ button {
 .message p {
   @apply text-slate-800 text-lg
 }
-
+.message.active {
+  @apply !bg-white
+}
 .editDisclaimer {
   @apply !text-slate-400 !text-sm items-baseline
 }

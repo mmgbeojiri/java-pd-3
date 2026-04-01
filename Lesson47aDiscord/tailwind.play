@@ -3,7 +3,7 @@
   <button onClick = getData()>Click Here To Fetch Data</button>
 </div>
 <div id="jsonContainer">
-  <div class="message">
+  <div class="message ">
     <div class="messageHeader">
       <h1>da big porche</h1>
       <div class="buttonContainer">
@@ -22,7 +22,7 @@
   </div>
 
 
-  <div class=" message">
+  <div class="message active">
       <h1>michael</h1>
       <p> DELETE FROM Tweets</p><span>2026-03-24T13:11:48.=466413200Z</span>
     </div>
