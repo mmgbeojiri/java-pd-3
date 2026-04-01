@@ -576,7 +576,12 @@ form button {
               <button>delete</button>
               </div>
             </div>
+            <div class="messageContent">
             <p>${element.Message}</p>
+            `
+            + (element.Edited == 1 ? "<p>(edited)</p>" : "") +
+            `
+            </div>
             <span>${new Date(element.Timestamp).toLocaleString()}</span>
             </div>` +htmlCode;
           jsonData.push(element);
