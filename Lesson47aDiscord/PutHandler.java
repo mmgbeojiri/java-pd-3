@@ -46,11 +46,12 @@ public  class PutHandler implements HttpHandler {
                 
                 try (Connection connection = DriverManager.getConnection("jdbc:sqlite:twitter.db")) {
 
-                    String insert = "UPDATE Tweets SET Name = ?, Message = ? WHERE Id = ?";
+                    String insert = "UPDATE Tweets SET Name = ?, Message = ?, Edited = ? WHERE Id = ?";
                     PreparedStatement ps = connection.prepareStatement(insert);
                     ps.setString(1, name);
                     ps.setString(2, message);
-                    ps.setString(3, id);
+                    ps.setString(3, "1"); // Set Edited to 1 (true)
+                    ps.setString(4, id);
 
                     ps.executeUpdate();
 
