@@ -439,7 +439,7 @@ form button {
               <h1>${element.Name}</h1>
               <div class="buttonContainer">
               <button onclick="populateData('${element.Id}')">edit</button>
-              <button>delete</button>
+              <button onclick="deleteData('${element.Id}')">delete</button>
               </div>
             </div>
             <div class="messageContent">
@@ -512,14 +512,36 @@ form button {
       body: JSON.stringify(data), // Converts the JavaScript object to a JSON string
     });
   }  catch (error) {
-    console.error("Error:", error); // Handles network errors or the error thrown above
+    console.error("Error: ", error); // Handles network errors or the error thrown above
   }
 
     getData();
     return;
   }
 
+
+  async function deleteData(id) {
+    data = {
+      "Id": id,
+    } 
+    // yes we have to put the singular value in a json file
+    try {
+      const response = await fetch("https://sturdy-system-7vv7qq955gqrfpvwr-8500.app.github.dev/delete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json", // Indicates the body format is JSON
+        },
+        body: JSON.stringify(data), // Converts the JavaScript object to a JSON string
+      });
+    }  catch (error) {
+      console.error("Error: ", error); // Handles network errors or the error thrown above
+    }
+  
+    getData();
+
+    }
   function populateData(id) {
+    // This adds the message data to the input fields
     message = document.getElementById(id);
     message_name = message.querySelector("h1").innerText;
     message_text= message.querySelector("p").innerText;
