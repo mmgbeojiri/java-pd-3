@@ -429,6 +429,7 @@ form button {
   async function getData() { // Function to get messages 
     jsonData = [];
     htmlCode = ""
+    lastHTML = document.getElementById("jsonContainer").innerHTML;
     jsonContainer = document.getElementById("jsonContainer");
     try {
       fetch(link + "/")
@@ -459,8 +460,11 @@ form button {
         
 
 
-    if (jsonContainer.innerHTML != htmlCode) { // Only update the HTML if it has changed
+    if (lastHTML != htmlCode) { // Only update the HTML if it has changed
+      console.log("Html is DIFFERENT. changing.");
       jsonContainer.innerHTML = htmlCode;
+
+      console.log(typeof jsonContainer.innerHTML, typeof htmlCode);
     }
       });
     } catch {
