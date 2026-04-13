@@ -482,7 +482,7 @@ form button {
         "Timestamp": new Date(document.getElementById(editing_id).querySelector("span").innerText).toISOString(),
         "Id": editing_id,
       }
-      
+
       toggleEditing(false);
 
       try {
@@ -545,7 +545,7 @@ form button {
 
     }
   
-    function populateData(id) { // Function to populate the input fields with the message data for editing
+  function populateData(id) { // Function to populate the input fields with the message data for editing
     message = document.getElementById(id);
     message_name = message.querySelector("h1").innerText;
     message_text= message.querySelector("p").innerText;
@@ -555,6 +555,9 @@ form button {
     editing_id = id;
     toggleEditing(true); // its not a toggle if you specifiy the boolean!
   }
-</script>
+  
+  getData(); // Initial Fetch Of Messages
+  setInterval(getData, 1000); // Auto Fetch New Messages Every Second
+  </script>
 </body>
 </html>
