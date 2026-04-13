@@ -459,8 +459,9 @@ form button {
         
 
 
-    
-    jsonContainer.innerHTML = htmlCode;
+    if (jsonContainer.innerHTML != htmlCode) { // Only update the HTML if it has changed
+      jsonContainer.innerHTML = htmlCode;
+    }
       });
     } catch {
       response = "Server Returned 500."
@@ -558,6 +559,8 @@ form button {
   
   getData(); // Initial Fetch Of Messages
   setInterval(getData, 1000); // Auto Fetch New Messages Every Second
+
+  /*if anyone wants to copy the message, this get data function removes their selection every second and is annoying.*/
   </script>
 </body>
 </html>
