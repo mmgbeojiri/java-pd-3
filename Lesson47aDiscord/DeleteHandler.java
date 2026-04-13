@@ -45,6 +45,7 @@ public  class DeleteHandler implements HttpHandler {
                 try (Connection connection = DriverManager.getConnection("jdbc:sqlite:twitter.db")) {
 
                     String insert = "DELETE FROM Tweets WHERE Id = ?";
+                    // Search up what is a "transaction" and how i can use it to not delete my entire database.
                     PreparedStatement ps = connection.prepareStatement(insert);
                     ps.setString(1, id);
 
