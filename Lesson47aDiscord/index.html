@@ -387,7 +387,7 @@ form button {
     <input type="text" id="nameInput" placeholder="Username"></input>
     <input type="text" id="messageInput" placeholder="Enter your message"></input>
     <button type="button" onclick="
-    sendData()">Send</button> // THIS DOESNT remove text from message input, please fix.
+    sendData()">Send</button> 
     </form>
     </div>
 <script>
@@ -415,7 +415,7 @@ form button {
             event.preventDefault(); 
             // Trigger the form submission or button click
             sendData();
-            messageInput.value = "";
+            
            
         }
 
@@ -471,6 +471,7 @@ form button {
   async function sendData() {
     name = document.getElementById("nameInput").value;
     message = document.getElementById("messageInput").value;
+    messageInput.value = "";
     if (editing) { // PUT REQUEST
       data = {
         "Name": name,
@@ -495,6 +496,7 @@ form button {
       getData();
       return;
     }
+    // POST REQUEST 
     data = {
       "Name": name,
       "Message": message,
