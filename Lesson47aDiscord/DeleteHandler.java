@@ -46,10 +46,11 @@ public  class DeleteHandler implements HttpHandler {
 
                     String insert = "DELETE FROM Tweets WHERE Id = ?";
                     // Search up what is a "transaction" and how i can use it to not delete my entire database.
+                    // update: im not doing this because im gay and lazy and i trust myself in writing a single statement
                     PreparedStatement ps = connection.prepareStatement(insert);
                     ps.setString(1, id);
 
-                    //ps.executeUpdate();
+                    ps.executeUpdate();
 
                 } catch (SQLException e) {
                     e.printStackTrace();
