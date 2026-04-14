@@ -396,6 +396,12 @@ form button {
   editing_id = "";
   link = "https://sturdy-system-7vv7qq955gqrfpvwr-8500.app.github.dev"
 
+  lukasMode = true;
+
+  if (lukasMode) {
+      document.getElementById("messageInput").placeholder = "Lukas Mode is on. No changes will be sent, edited, or deleted."
+    }
+
   function toggleEditing(bool) { // Toggles The Editing State
     editing = bool;
     let editingNote = document.getElementById("editing");
@@ -476,6 +482,9 @@ form button {
   }
 
   async function sendData() { // Function to send and edit messages
+    if (lukasMode) {
+      return;
+    }
     name = document.getElementById("nameInput").value;
     message = document.getElementById("messageInput").value;
     messageInput.value = "";
@@ -530,6 +539,9 @@ form button {
   }
 
   async function deleteData(id) { // Function to delete messages
+    if (lukasMode) {
+      return;
+    }
     data = {
       "Id": id,
     } 
@@ -551,6 +563,9 @@ form button {
     }
   
   function populateData(id) { // Function to populate the input fields with the message data for editing
+    if (lukasMode) {
+      return;
+    }
     message = document.getElementById(id);
     message_name = message.querySelector("h1").innerText;
     message_text= message.querySelector("p").innerText;
