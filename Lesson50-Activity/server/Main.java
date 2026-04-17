@@ -33,15 +33,21 @@ class Main {
     //create the HTTPserver object
     HttpServer server = HttpServer.create(new InetSocketAddress(port),0);
 
-    s
+
 
     // create the database object
     Database db = new Database("jdbc:sqlite:chinook.db");
     
+
+    
+    String sql = "SELECT Name FROM tracks;";
+
+
+
    // Add your  code here
     
     server.createContext("/", new RouteHandler("You are connected, but route not given or incorrect....") );
-    server.createContext("/", new RouteHandler("You are connected, but route not given or incorrect....") );
+    server.createContext("/songs", new RouteHandler(db, sql) );
 
     //Start the server
     server.start();
