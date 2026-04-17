@@ -10,7 +10,7 @@ function init(){
   response = fetch(link + route).then(response => response.json()).then(data => {
     console.log(data);
     data.forEach(element => {
-      bld += `<div><h1>${element.Name}</h1></div>`;
+      bld += `<div class="card"><h1>${element.Name}</h1></div>`;
     });
 
     document.getElementById("output").innerHTML = bld;
