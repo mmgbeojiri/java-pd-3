@@ -1,11 +1,12 @@
 
 let employees;
+
 function init(){
   $.ajaxSetup({async: false});
-  
   let link = "https://raw.githubusercontent.com/PorchettaEP/JSONFILES/refs/heads/main";
-  let route= "/genres"
+  let route= "/customers"
   employees = $.getJSON(link+route).responseJSON;
+
   console.log(employees)
 
   generateCards(employees);
@@ -21,10 +22,16 @@ function generateCards(employees){
    
   for(let i=0; i<employees.length; i++){
     let employee = employees[i]
+    
     build += `<div class="card" >`
-    build += `<h3> Genre : ${employee.Name}</h3>`;
+    build += `<h3> Customer ID : ${employee.CustomerId}</h3>`;
+    build += `<div> First Name : ${employee.FirstName}</div>`;
+    build += `<div> Last Name : ${employee.LastName}</div>`;
+    build += `<p> Country : ${employee.Country}</p>`;
     build += `<hr>`;
+    build += `<img src=¨./countries/${employee.Country}.PNG¨ />`
     build += `</div>`;
+  
   }
 
   output.innerHTML = build;
@@ -32,13 +39,11 @@ function generateCards(employees){
 }
 
 function filter() {
-  let link = "https://Lesson48ClassworkDBServer.ernestoporchett.repl.co";
-  let route= "/employees"
-  employees = $.getJSON(link+route).responseJSON;
+
   query = document.getElementById("employeeSearch").value;
   newEmployees = [];
   employees.forEach(employee => {
-    if (employee.Name == query) {
+    if (employee.Country == query) {
       newEmployees.push(employee);
     }
   });

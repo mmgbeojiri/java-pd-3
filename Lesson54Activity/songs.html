@@ -8,12 +8,50 @@
     <!-- We need to import JQUERY Library to make the api call-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="songs.js"></script>
 
   </head>
   
   <!-- Call the int function when website loads -->
-  <body>
+
+  <body onload="init()">
+    <div >
+      <!--  Header or Banner -->
+      <div id="header">
+        <h1> Lesson 54 Classwork - Songs</h1>
+      </div>
+      
+      <div class='searchpanel'>
+          Search Panel
+
+
+      </div>
+<nav id='nav'>
+          <H2>NAV</H2><br> 
+      <a href="./index.html">Home</a>
+      <a href="./customers.html">Customers</a>
+      <a href="./employees.html">Employees</a>
+      <a href="./songs.html">Songs</a>
+        </nav>
+      <div class="container">
+        <!--  nav bar -->
+        
+        
+        <div class="yellow" >
+          <input id="employeeSearch" placeholder="search via name"></input>
+          <button onclick="filter()">submit</button>
+        </div>
+        <div id='mainpanel' class="container">
+          <div id="output"><h1>this website will allow you to search the chinook database</h1></div>
+        </div>
+        <div class="yellow">Right Panel</div>
+      </div>
+
+      <div id='foot'>
+        <h3> Footer </h3>
+      </div>
+
+    </div>
     
   </body>
 </html>

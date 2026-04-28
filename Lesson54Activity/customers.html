@@ -8,7 +8,7 @@
     <!-- We need to import JQUERY Library to make the api call-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="customers.js"></script>
 
   </head>
   
@@ -18,7 +18,7 @@
     <div >
       <!--  Header or Banner -->
       <div id="header">
-        <h1> Lesson 54 Classwork - Home</h1>
+        <h1> Lesson 54 Classwork - Customers</h1>
       </div>
       
       <div class='searchpanel'>
@@ -37,9 +37,11 @@
         <!--  nav bar -->
         
         
-        <div class="yellow" >Left Panel</div>
+        <div class="yellow" >
+          <input id="employeeSearch" placeholder="search via country"></input>
+          <button onclick="filter()">submit</button>
+        </div>
         <div id='mainpanel' class="container">
-          Main Panel
           <div id="output"><h1>this website will allow you to search the chinook database</h1></div>
         </div>
         <div class="yellow">Right Panel</div>
